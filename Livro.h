@@ -13,5 +13,6 @@ class Livro{
         Livro(const Livro& livro);
         virtual ~Livro() = default;
 
-        virtual Livro* clonar() = 0;        
+        virtual Livro* clonar() = 0;     
+        virtual void getLivro();   
 };
