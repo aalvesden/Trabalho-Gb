@@ -1,6 +1,5 @@
 #pragma once
 #include <string> 
-#include "LivroAcao.h"
 #include "Livro.h"
 
 using namespace std;
