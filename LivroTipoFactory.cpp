@@ -8,7 +8,7 @@ LivroTipoFactory::~LivroTipoFactory()
     }
 }
 
-LivroTipo *LivroTipoFactory::getTipo(std::string &categoria)
+LivroTipo *LivroTipoFactory::getTipo(std::string categoria)
 {
     if (tipos.find(categoria) == tipos.end())
     {

@@ -12,5 +12,5 @@ private:
 public:
     ~LivroTipoFactory();
 
-    LivroTipo *getTipo(std::string &categoria);
+    LivroTipo *getTipo(std::string categoria);
 };
