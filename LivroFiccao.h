@@ -6,7 +6,7 @@ using namespace std;
 
 class LivroFiccao : public Livro{
     public:
-        LivroFiccao(string Autor, string Titulo, string Categoria);
+        LivroFiccao(string Autor, string Titulo, LivroTipo* categoria);
         LivroFiccao(const LivroFiccao& livroFiccao);
 
         Livro* clonar() override;
