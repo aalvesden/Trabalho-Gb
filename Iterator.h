@@ -1,3 +1,4 @@
+#pragma once
 #include "Livro.h"
 
 class Iterator {
