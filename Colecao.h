@@ -7,6 +7,7 @@ class Colecao {
 private:
     vector<Livro*> acervo;
 public:
+    ~Colecao();
     void AdicionarLivro(Livro* l);
     Iterator* CriarIterator();
 };
