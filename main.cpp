@@ -1,45 +1,44 @@
 #include <iostream>
-#include "Livro.h"
-#include "LivroAcao.h"
-#include "LivroFiccao.h"
-#include "LivroTipoFactory.h"
-#include "Colecao.h"
+#include <map>
+#include "SistemaBiblioteca.h"
+#include "Menus/Menu.h"
+#include "Menus/MenuRegistrarLivro.h"
+#include "Menus/MenuMostrarAcervo.h"
 
 int main()
 {
-    LivroTipoFactory factory;
 
-    LivroTipo *tipoAcao = factory.getTipo("Acao");
-    LivroTipo *tipoFiccao = factory.getTipo("Ficcao");
+    SistemaBiblioteca sistema;
 
-    Livro *livroAcao1 = new LivroAcao("Autor 1", "Titulo 1", tipoAcao);
-    Livro *livroAcao2 = livroAcao1->clonar();
+    std::map<int, Menu*> opcoes;
 
-    Livro *livroFiccao1 = new LivroFiccao("Autor 2", "Titulo 2", tipoFiccao);
-    Livro *livroFiccao2 = livroFiccao1->clonar();
+    opcoes[1] = new MenuRegistrarLivro();
+    opcoes[2] = new MenuMostrarAcervo();
 
-    Colecao acervo;
+    int opcao;
 
-    acervo.AdicionarLivro(livroAcao1);
-    acervo.AdicionarLivro(livroAcao2);
-    acervo.AdicionarLivro(livroFiccao1);
-    acervo.AdicionarLivro(livroFiccao2);
+    do{
+        std::cout << "\n=== Biblioteca ===" << std::endl;
+        std::cout << "1 - Registrar livro" << std::endl;
+        std::cout << "2 - Exibir acervo" << std::endl;
+        std::cout << "-1 - Sair" << std::endl;
 
-    cout << "\n=== ACERVO GERAL ===\n";
-    Iterator* it = acervo.CriarIterator();
-    
-    while(it->hasNext()) {
-        Livro* livro = it->next();
-        livro->getLivro();
-        livro->mostrarFlyweightId();
-        cout << "Endereco do livro: " << livro << "\n" << endl;
+        std::cin >> opcao;
+
+        if(opcao == -1) break;
+
+        if(opcoes.find(opcao) != opcoes.end()){
+            opcoes[opcao]->executar(sistema);
+        } else {
+            std::cout << "Opcao invalida!\n";
+        }
+
+    } while (opcao != -1);
+
+    for(auto& par : opcoes)
+    {
+        delete par.second;
     }
-
-    delete it;
-    delete livroAcao1;
-    delete livroAcao2;
-    delete livroFiccao1;
-    delete livroFiccao2;
-
+    
     return 0;
 }
