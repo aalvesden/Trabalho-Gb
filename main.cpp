@@ -4,6 +4,8 @@
 #include "Menus/Menu.h"
 #include "Menus/MenuRegistrarLivro.h"
 #include "Menus/MenuMostrarAcervo.h"
+#include "Menus/MenuColecoes.h"
+#include "Menus/MenuEstragados.h"
 
 int main()
 {
@@ -14,6 +16,8 @@ int main()
 
     opcoes[1] = new MenuRegistrarLivro();
     opcoes[2] = new MenuMostrarAcervo();
+    opcoes[3] = new MenuColecoes();
+    opcoes[4] = new MenuEstragados();
 
     int opcao;
 
@@ -21,6 +25,8 @@ int main()
         std::cout << "\n=== Biblioteca ===" << std::endl;
         std::cout << "1 - Registrar livro" << std::endl;
         std::cout << "2 - Exibir acervo" << std::endl;
+        std::cout << "3 - Mostrar Colecoes" << std::endl;
+        std::cout << "4 - Mostrar edicoes estragadas" << std::endl;
         std::cout << "-1 - Sair" << std::endl;
 
         std::cin >> opcao;

@@ -23,6 +23,7 @@ public:
 
         string autor;
         string titulo;
+        string estado;
         int categoria;
         int quantidade;
 
@@ -37,7 +38,10 @@ public:
         std::cout << "2 - Ficcao " << std::endl;
         cin >> categoria;
 
-        std::cout << "\nQuantidade de edicoes: ";
+        std::cout << "Qual a condicao do livro (Estragado ou Novo): ";
+        cin >> estado;
+
+        std::cout << "\nQuantidade de edicoes nessas condicoes: ";
         cin >> quantidade;
         if (quantidade <= 0)
         {
@@ -48,7 +52,7 @@ public:
         if (categoria == 1)
         {
             LivroTipo *tipo = sistema.factory.getTipo("Acao");
-            Livro *livro = new LivroAcao(autor, titulo, tipo);
+            Livro *livro = new LivroAcao(autor, titulo, tipo, estado);
             sistema.acervo.AdicionarLivro(livro);
             if(quantidade > 1){
                 adicionarEdicoes(sistema, livro, quantidade);
@@ -57,7 +61,7 @@ public:
         else if (categoria == 2)
         {
             LivroTipo *tipo = sistema.factory.getTipo("Ficcao");
-            Livro *livro = new LivroFiccao(autor, titulo, tipo);
+            Livro *livro = new LivroFiccao(autor, titulo, tipo, estado);
             sistema.acervo.AdicionarLivro(livro);
             if(quantidade > 1){
                 adicionarEdicoes(sistema, livro, quantidade);
@@ -69,6 +73,6 @@ public:
             return;
         }
         
-        std::cout << quantidade << " edicao(oes) cadastrada(s)!\n";
+        std::cout << quantidade << " edicao(oes) nesta condicao cadastrada(s)!\n";
     }
 };
